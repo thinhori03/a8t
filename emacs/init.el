@@ -32,7 +32,7 @@
 (setq display-line-numbers-width 7)
 
 ;; keep customize settings in their own file 
-(setq custom-file "~/.còndig/emacs/custom.el")
+(setq custom-file "~/.config/emacs/custom.el")
 (when (file-exists-p custom-file) (load custom-file))
 
 
