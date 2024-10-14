@@ -12,7 +12,7 @@ u: user
 g: group
 o: other
 
-Permission of arch role is the sum of permission values.
+Permission of each role is the sum of permission values.
 e.g
   700 <=> u : 1 + 2 + 4 (rwx)
           g : 0         (---)
