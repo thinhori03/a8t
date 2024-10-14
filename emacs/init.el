@@ -29,7 +29,11 @@
 ;; global line number relatively
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
-(setq display-line-numbers-width 7)
+(setq display-line-numbers-width 7) ;; %7d a.k.a
+                                    ;; |      1 content pf line 1
+                                    ;; |      2 contrnt of line 2
+                                    ;; |      . ...
+                                    ;; |    999 contrnt of line 999
 
 ;; keep customize settings in their own file 
 (setq custom-file "~/.config/emacs/custom.el")
