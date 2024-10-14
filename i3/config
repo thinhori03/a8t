@@ -204,6 +204,6 @@ bar {
 
 default_border none
 
-gaps inner 16px
+gaps inner 16px # using font size for gaps
 
 # end-my
