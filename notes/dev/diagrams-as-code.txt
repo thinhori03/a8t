@@ -1,0 +1,7 @@
+
+# Diagram as Code.
+  ===============
+
+  I. via Mermaid.js (https://mermaid.js.org/)
+     - ERD: see https://mermaid.js.org/syntax/entityRelationshipDiagram.html
+         
