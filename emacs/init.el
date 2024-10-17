@@ -36,8 +36,10 @@
                                     ;; |    999 contrnt of line 999
 
 ;; keep customize settings in their own file 
-(setq custom-file "~/.config/emacs/custom.el")
-(when (file-exists-p custom-file) (load custom-file))
+(setq custom-file (concat user-emacs-directory "/custom.el"))
+
+;; load custom file and ignore error messages.
+(when (file-exists-p custom-file) (load-file custom-file 'noerror))
 
 
 ;; nix-ts-mode
@@ -45,4 +47,3 @@
 (use-package nix-ts-mode
   :ensure t
   :mode "\\.nix\\'")
-
