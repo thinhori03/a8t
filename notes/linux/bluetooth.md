@@ -1,6 +1,6 @@
 To enable Bluetooth on Linux via the command line, you can use the following steps:
 
-## ensure your linux user in bluetooth group.
+0. ensure your linux user in `bluetooth` group.
 
 ``` sb
   groups $USER
