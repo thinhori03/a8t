@@ -32,7 +32,7 @@
     ```
   - `public clai]`:
   - `private claim`:
-- **signature**: encoded `header`, `payload`, a secret.
+- **signature**: encoded `header`, `payload`, a secret, signing using `headernsig` algorithm.
   ``` C
   HMACSHA256(
       base64UrlEncode(header) + "." +
