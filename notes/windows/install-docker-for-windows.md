@@ -29,4 +29,5 @@ $ wsl --update
 - install podman to distro:
 ```shell
 $ sudo apt-get install -y podman
+$ sudo apt-get update -y
 ```
