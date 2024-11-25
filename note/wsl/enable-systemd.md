@@ -3,9 +3,7 @@
 
 ### edit WSL local config.
 
-the wsl local config file: `/etc/wsl.conf`
-
-the content is
+open wsl local config file (`/etc/wsl.conf`) and add the content:
 
 ```
 [boot]
