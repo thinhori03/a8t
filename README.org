@@ -1,6 +1,5 @@
-* atta
-a2t -- t2a
+* a8t -- A & T
 
 #+begin_quote
-  notes, config and ...
+  notes, config and more ...
 #+end_quote

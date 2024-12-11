@@ -1,4 +1,7 @@
 
+;; auto debug
+(setq debug-on-error t)
+ 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.
@@ -8,8 +11,13 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-(defvar n2e/custom-file (concat user-emacs-directory "custom.el")
+;; global variables.
+
+(defvar a8t/custom-file (concat user-emacs-directory ".n2e/custom.el")
   "default custom file,")
+
+(defvar a8t/tree-sitter-gram-load-path (concat user-emacs-directory ".n2e/treesit")
+  "tree-sitter grammars directory.")
 
 ;; use package
 
@@ -20,10 +28,10 @@
 ;; emacs properties
 
 (setq-default make-backup-files nil
-			  tab-width 4
-			  electric-pair-mode t ;; automatically add ending brackets
-			  show-paren-mode t ;;; ato match branckets
-			  )
+	      ;; automatically add ending brackets
+              electric-pair-mode t
+	      ;; auto match branckets
+              show-paren-mode t)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -37,8 +45,10 @@
 
 ;; custom file
 
-(setq custom-file n2e/custom-file)
-(load custom-file 'noerror)
+(setq custom-file a8t/custom-file)
+;; load custom file and ignore errors 
+(load custom-file 'noerror) 
+
 
 ;; minibuffer completion
 
@@ -185,8 +195,8 @@
 
 (use-package flycheck
   :init
-  (global-flycheck-mode)
-
+  (global-flycheck-mode))
+  
 ;; which key
 
 (use-package which-key
@@ -197,17 +207,21 @@
 
 (use-package yasnippet
   :init
-  (global-yasnippet-mode))
+  (yas-global-mode 1))
 
-;; file exploere
+;; file explorer
 
 (use-package treemacs)
+
+(use-package treemacs-projectile
+  :after projectile
+  :init (treemacs-project-follow-mode t ))
 
 ;; LSP and DAP
 
 (use-package lsp-mode
   :hook
-  ((lsp-mode . lsp-enable-which-key-omtegration)))
+  ((lsp-mode . lsp-enable-which-key-integration)))
 
 (use-package dap-mode
   :after lsp-mode
@@ -219,4 +233,3 @@
 (use-package lsp-java
   :config
   (add-hook 'java-mode-hook 'lsp))
-
