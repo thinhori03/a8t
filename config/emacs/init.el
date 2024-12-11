@@ -13,10 +13,10 @@
 
 ;; global variables.
 
-(defvar n2e/custom-file (concat user-emacs-directory ".n2e/custom.el")
+(defvar a8t/custom-file (concat user-emacs-directory ".n2e/custom.el")
   "default custom file,")
 
-(defvar n2e/tree-sitter-gram-load-path (concat user-emacs-directory ".n2e/treesit")
+(defvar a8t/tree-sitter-gram-load-path (concat user-emacs-directory ".n2e/treesit")
   "tree-sitter grammars directory.")
 
 ;; use package
@@ -45,7 +45,7 @@
 
 ;; custom file
 
-(setq custom-file n2e/custom-file)
+(setq custom-file a8t/custom-file)
 ;; load custom file and ignore errors 
 (load custom-file 'noerror) 
 
