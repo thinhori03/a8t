@@ -13,10 +13,10 @@
 
 ;; global variables.
 
-(defvar a8t/custom-file (concat user-emacs-directory ".n2e/custom.el")
+(defvar n2e/custom-file (concat user-emacs-directory ".n2e/custom.el")
   "default custom file,")
 
-(defvar a8t/tree-sitter-gram-load-path (concat user-emacs-directory ".n2e/treesit")
+(defvar n2e/tree-sitter-gram-load-path (concat user-emacs-directory ".n2e/treesit")
   "tree-sitter grammars directory.")
 
 ;; use package
@@ -45,7 +45,7 @@
 
 ;; custom file
 
-(setq custom-file a8t/custom-file)
+(setq custom-file n2e/custom-file)
 ;; load custom file and ignore errors 
 (load custom-file 'noerror) 
 
@@ -105,27 +105,19 @@
 
 ;; completion at point
 
+(use-package company
+  :config
+  (setq company-idle-delay 0.1
+	company-minimum-prefix-length 1)
+  :hook
+  (after-init-hook . global-company-mode))
 
-(use-package corfu
-  ;; Optional customizations
-  ;; :custom
-  ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
-  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+(use-package company-box
+  :after (company)
+  :hook
+  (company-mode . company-box-mode))
 
-  ;; Enable Corfu only for certain modes. See also `global-corfu-modes'.
-  ;; :hook ((prog-mode . corfu-mode)
-  ;;        (shell-mode . corfu-mode)
-  ;;        (eshell-mode . corfu-mode))
 
-  ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
-  ;; be used globally (M-/).  See also the customization variable
-  ;; `global-corfu-modes' to exclude certain modes.
-  :init
-  (global-corfu-mode))
 
 ;; A few more useful configurations...
 (use-package emacs
@@ -220,8 +212,15 @@
 ;; LSP and DAP
 
 (use-package lsp-mode
+  :commands
+  (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
   :hook
-  ((lsp-mode . lsp-enable-which-key-integration)))
+  (prog-mode . lsp)
+  :config
+  (setq lsp-enable-snippet t)
+  (setq lsp-enable-completion-at-point t))
 
 (use-package dap-mode
   :after lsp-mode
