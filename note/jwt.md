@@ -1,5 +1,5 @@
 1. JWT Structure
-Authorization: Bearer base64UrlEncode(Header).base64UrlEncode(Payload).<Signature>
+Authorization: Bearer base64UrlEncode(Header).base64UrlEncode(Payload).< Signature >
 - Header: Contains metadata about the token, such as the type of token (JWT) 
 and the signing algorithm (HS256, RS256, etc.).
 ```json
